@@ -4,7 +4,8 @@ A small wrapper around Go's [flag.FlagSet](https://pkg.go.dev/flag) that does
 not call `os.Exit` and does not print any messages to `os.Stdout` or
 `os.Stderr`.
 
-The behavior of the default `flag.FlagSet` is to immediately exit the
+The behavior of the [default
+`flag.FlagSet`](https://pkg.go.dev/flag#CommandLine) is to immediately exit the
 application (by calling `os.Exit`) when the user invokes the help flag or when a
 parsing error is encountered. Additionally, the default `flag.FlagSet` prints
 errors directly to `os.Stderr` before exiting. It's assumed that the default

@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"flag"
+	"fmt"
 )
 
 // NewFlagSet returns a *FlagSet that does not call os.Exit and does not print
@@ -26,6 +27,13 @@ type flagSet = flag.FlagSet
 type FlagSet struct {
 	*flagSet
 	output *bytes.Buffer
+}
+
+// UsageError returns an error that includes the given message and the usage
+// information.
+func (fs *FlagSet) UsageError(msg string) error {
+	fs.Usage()
+	return fmt.Errorf("%s\n%s", msg, fs.output.String())
 }
 
 // Parse parses flag definitions from the argument list, which should not
